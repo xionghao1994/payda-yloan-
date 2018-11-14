@@ -31,9 +31,9 @@ let router = new Router({
     linkActiveClass: 'mui-active',
     routes: [
         { path: '/', redirect: { name: 'home' } },
-        { name: 'home', path: '/home', component: home },
-        { name: 'order', path: '/order', component: order },
-        { name: 'our', path: '/our', component: our },
+        { name: 'home', path: '/home', meta:{title:'首页'}, component: home },
+        { name: 'order', path: '/order', meta:{title:'订单'}, component: order },
+        { name: 'our', path: '/our', meta:{title:'个人中心'}, component: our },
 
         { path: '/ac', component: ac },
         { path: '/bank', component: bank },
@@ -52,6 +52,11 @@ let router = new Router({
         { path: '/pay', component: pay },
         { path: '/paySuccess', component: paySuccess }
     ]
+})
+
+// 页面标题
+router.afterEach((to,from)=>{
+    document.title=to.meta.title;
 })
 // 导出路由对象
 export default router;
