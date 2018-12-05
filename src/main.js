@@ -15,8 +15,14 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el:'#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  // created() {
+  //   this.$indicator.open({
+  //     text:'加载中...',
+  //     spinnerType: 'fading-circle'
+  //   });
+  // }
 })

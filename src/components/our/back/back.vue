@@ -2,10 +2,10 @@
 <div class="mui-content">
    <header>意见反馈</header>
    <div class="fd_main">
-		<textarea placeholder="请提出您的宝贵建议或者疑问" rows="6" cols="20" id="textarea"></textarea>
+		<textarea v-model="value" placeholder="请提出您的宝贵建议或者疑问" rows="6" cols="20" id="textarea"></textarea>
 	</div>
 	<div class="input">
-		<input type="text" id="phone" maxlength="11" placeholder="请输入手机号" />
+		<input v-model="value" type="text" id="phone" maxlength="11" placeholder="请输入手机号" />
 	</div>
 	<div class="button" id="button">提交</div>
    </div>
@@ -15,7 +15,7 @@
 export default{
     data(){
         return{
-
+			value:''
         }
     }
 }

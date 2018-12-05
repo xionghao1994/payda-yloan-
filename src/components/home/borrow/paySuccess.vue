@@ -5,7 +5,7 @@
 		<div class="pitc">
 			<img src="../../../static/images/success.png" alt="" />
 		</div>
-		<p>您的延期申请已经收到，订单处理中</p>
+		<p>{{pay.detail}}</p>
 		<div class="button" @click="sure()" id="btn">确定</div>
 	</div>
  </div>
@@ -14,7 +14,9 @@
   export default{
       data(){
           return{
-
+			  pay:{
+				  detail:'您的延期申请已经收到，订单处理中'
+			  }
           }
       },
       methods:{

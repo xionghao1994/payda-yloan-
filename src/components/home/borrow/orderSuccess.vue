@@ -3,19 +3,21 @@
       <header>订单成功</header>
      <div class="main">
 		<div class="pitc">
-			<img src="../../../static/images/success.png">
+			<img :src="item_image">
 		</div>
 		<p>订单提交成功</p>
-		<div class="detail">您好，平台正在审核您的资料，请保证填写信息无误，审核过程中将会有客服和您电话沟通，请保持您的手机畅通，注意接听电话</div>
+		<div class="detail">{{item_detail}}</div>
 		<div class="button" @click="btn()">查看回收进度</div>
 	</div>  
   </div>
 </template>
 <script>
+import image from '../../../static/images/success.png'
  export default{
      data(){
          return{
-           
+           item_image:image,
+		   item_detail:'您好，平台正在审核您的资料，请保证填写信息无误，审核过程中将会有客服和您电话沟通，请保持您的手机畅通，注意接听电话'
          }
      },
 	 methods:{

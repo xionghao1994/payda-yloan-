@@ -4,13 +4,13 @@
   <div class="top">
         <ul>
           <li>应付预付款
-            <span>2600 ¥</span>
+            <span>{{sale.money}}¥</span>
           </li>
           <li>违约金
-            <span>2000</span>
+            <span>{{sale.money1}}</span>
           </li>
           <li>滞纳金
-            <span>26 ¥</span>
+            <span>{{sale.number}}¥</span>
           </li>
         </ul>
 	    </div>
@@ -18,13 +18,10 @@
         <p class="pay_money">应付金额 （元）
           <i @click="layer()" id="layer"></i>
         </p>
-		   <p class="price">3030.00</p>
+		   <p class="price">{{sale.money2}}</p>
 	   </div>
 	<div class="content">
-		<p>温馨提示:</p>
-		<p>如您确定还款，请及时支付应付金额</p>
-		<p>如您出现无法支付情况，请及时联系客服</p>
-		<p>如您还需考虑是否立即还款，可申请延长借款期限</p>
+		<p v-for="(item,index) in hint" :key="index">{{item.p}}</p>
 	</div>
 	<div class="footer">
 		<div class="inline">
@@ -43,7 +40,18 @@ import { MessageBox,Toast } from 'mint-ui';
   export default{
       data(){
           return{
-
+						sale:{
+							money:'2600',
+							money1:'2000',
+							money2:'3030.00',
+							number:'36'
+						},
+						hint:[
+							{p:'温馨提示:'},
+							{p:'如您确定还款，请及时支付应付金额'},
+							{p:'如您出现无法支付情况，请及时联系客服'},
+							{p:'如您还需考虑是否立即还款，可申请延长借款期限'}
+						],
           }
       },
       methods:{

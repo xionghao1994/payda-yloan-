@@ -1,126 +1,23 @@
 <template>
 <div class="mui-content">
-	<header>订单记录</header>
+	<header>{{order_header}}</header>
     <ul class="order">
-       <li class="one">
+       <li v-for="(item,index) in order" class="one">
          <div class="model">
-          <span>申请时间：2018-9-17  15:14</span>
-          <span class="detail">查看详情
+          <span>{{item.time}}</span>
+          <span class="detail">{{item.detail}}
          <span class="icon mui-icon mui-icon-arrowright"></span></span>
          </div>
          <div class="info">
             <ul>
-                <li>借款金额
-                    <span class="number">3000&nbsp;元</span>
+                <li>{{item.borrow}}
+                    <span class="number">{{item.money}}</span>
                 </li>
-                <li>到账金额
-                    <span>3600</span>
+                <li>{{item.limit}}
+                    <span>{{item.mon}}</span>
                 </li>
-                <li>借款期限
-                    <span>7天</span>
-                </li>
-            </ul>
-        </div>
-      </li>
-    <li>
-        <div class="model">
-                <span>申请时间：2018-9-17  15:14</span>
-                <span class="detail">逾期中
-                    <span class="icon mui-icon mui-icon-arrowright"></span>
-                </span>
-            </div>
-            <div class="info">
-                <ul>
-                    <li>借款金额
-                        <span class="number">3000</span>
-                    </li>
-                    <li>到账金额
-                        <span>36000</span>
-                    </li>
-                    <li>借款期限
-                        <span>7天</span>
-                    </li>
-                </ul>
-            </div>
-       </li>
-        <li>
-            <div class="model">
-                <span>申请时间：2018-9-17  15:14</span>
-                <span class="detail">已结清
-                    <span class="icon mui-icon mui-icon-arrowright"></span>
-                </span>
-            </div>
-            <div class="info">
-                <ul>
-                    <li>借款金额
-                        <span class="number">3000</span>
-                    </li>
-                    <li>到账金额
-                        <span>36000</span>
-                    </li>
-                    <li>借款期限
-                        <span>7天</span>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li>
-            <div class="model">
-                <span>申请时间：2018-9-17  15:14</span>
-                <span class="detail">已拒绝
-                    <span class="icon mui-icon mui-icon-arrowright"></span>
-                </span>
-            </div>
-            <div class="info">
-                <ul>
-                    <li>借款金额
-                        <span class="number">3000</span>
-                    </li>
-                    <li>到账金额
-                        <span>36000</span>
-                    </li>
-                    <li>借款期限
-                        <span>7天</span>
-                    </li>
-                </ul>
-            </div>
-        </li>
-          <li class="one">
-         <div class="model">
-          <span>申请时间：2018-9-17  15:14</span>
-          <span class="detail">查看详情
-         <span class="icon mui-icon mui-icon-arrowright"></span></span>
-         </div>
-         <div class="info">
-            <ul>
-                <li>借款金额
-                    <span class="number">3000&nbsp;元</span>
-                </li>
-                <li>到账金额
-                    <span>3600</span>
-                </li>
-                <li>借款期限
-                    <span>7天</span>
-                </li>
-            </ul>
-        </div>
-      </li>
-        <li class="one">
-         <div class="model">
-          <span>申请时间：2018-9-17  15:14</span>
-          <span class="detail">查看详情
-         <span class="icon mui-icon mui-icon-arrowright"></span></span>
-         </div>
-         <div class="info">
-            <ul>
-                <li>借款金额
-                    <span class="number">3000&nbsp;元</span>
-                </li>
-                <li>到账金额
-                    <span>3600</span>
-                </li>
-                <li>借款期限
-                    <span>7天</span>
+                <li>{{item.date}}
+                    <span>{{item.day}}</span>
                 </li>
             </ul>
         </div>
@@ -132,7 +29,18 @@
 export default{
     data(){
         return{
-
+            order_header:'借款记录',
+            order:[
+                {time:'申请时间：2018-9-17  15:14',detail:'查看详情',
+                 borrow:'借款金额',money:'3000元', limit:'借款额度',
+                 mon:'3000',date:'借款期限',day:'7天'},
+                {time:'申请时间：2018-9-17  15:14',detail:'查看详情',
+                 borrow:'借款金额',money:'3000元', limit:'借款额度',
+                 mon:'3000',date:'借款期限',day:'6天'},
+                {time:'申请时间：2018-9-17  15:14',detail:'查看详情',
+                 borrow:'借款金额',money:'3000元', limit:'借款额度',
+                 mon:'3000',date:'借款期限',day:'5天'}      
+            ]          
         }
     }
 }

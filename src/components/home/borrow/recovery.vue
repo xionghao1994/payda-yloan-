@@ -2,62 +2,30 @@
   <div class="container">
       <header>回收详情</header>
     <div class="reDetail">
-	 <div class="top">申请时间：2018-09-12 15:23</div>
+	 <div class="top">申请时间：{{item.Date}}</div>
 	 <div class="nav">
 		<ul>
 			<li>回收金额
-				<span class="Number">300 ¥</span>
+				<span class="Number">{{item.money}} ¥</span>
 			</li>
 			<li>履约期
 				<i @click="layer()" id="layer"></i>
-				<span>7天</span>
+				<span>{{item.day}}天</span>
 			</li>
 			<li>申请时间
-				<span>2018-02-24</span>
+				<span>{{item.date}}</span>
 			</li>
 		</ul>
 	 </div>
 	  <div class="children">
 		 <ul>
-			<li>
+			<li v-for="(item,index) in list" :key="index">
 				<i class="check"></i>
-			  <span>07:50</span>
-			  <span>04-13</span>
-				<h3>提交借款申请</h3>
-			</li>
-			<li>
-				<i></i>
-			  <span>07:50</span>
-			  <span>04-13</span>
-				<h3>资料审核中</h3>
-			</li>
-			<li>
-				<i></i>
-			  <span>07:50</span>
-			  <span>04-13</span>
-				<h3>资料审核通过</h3>
-				<p>预付款打款中</p>
-			</li>
-			<li>
-				<i></i>
-			  <span>07:50</span>
-			  <span>04-13</span>
-				<h3>预付款打款成功</h3>
-				<p>预付款已打款到你绑定的银行卡，请注意查收</p>
-			</li>
-			<li>
-				<i></i>
-			  <span>07:50</span>
-			  <span>04-13</span>
-				<h3>尾款打款中</h3>
-				<p>尾款金额：200元</p>
-				<p>经专业质检发现与评估价值符合</p>
-			</li>
-			<li>
-				<i></i>
-			  <span>07:50</span>
-			  <span>04-13</span>
-				<h3>已经延期成功，请在期限内完成订单</h3>
+			  <span>{{item.time}}</span>
+			  <span>{{item.date}}</span>
+				<h3>{{item.detail}}</h3>
+				<p>{{item.message}}</p>
+				<p>{{item.bank}}</p>
 			</li>
 		</ul>
 	  </div>
@@ -78,7 +46,21 @@ import Countdown from '../../Common/Countdown'; //引入倒计时组件
   export default{
       data(){
           return{
-              endTime : '2018-12-01 0:00:00' 
+			  list:[
+				{time:'07:50',date:'04-13',detail:'提交借款申请'},
+				{time:'07:50',date:'04-13',detail:'资料审核中'},
+				{time:'07:50',date:'04-13',detail:'资料审核通过',message:'预付款打款中'},
+				{time:'07:50',date:'04-13',detail:'预付款打款成功',message:'预付款已打款到你绑定的银行卡，请注意查收'},
+				{time:'07:50',date:'04-13',detail:'尾款打款中',message:'尾款金额：200元',bank:'经专业质检发现与评估价值符合'},
+				{time:'07:50',date:'04-13',detail:'已经延期成功，请在期限内完成订单'},
+			  ],
+			  item:{
+				  Date:'2018-09-12 15:23',
+				  money:'300',
+				  day:'7',
+				  date:'2018-02-24'
+			  },
+              endTime : '2018-12-30 0:00:00' 
           }
       },
       methods:{
@@ -229,13 +211,13 @@ header{
 }
 @media screen and (max-width: 320px){
    .children{
-   	  height:230px;
+   	  height:281px;
    	  overflow-y: auto; 
    }
 }
 @media screen and (min-width: 321px) and (max-width: 375px){
    .children{
-   	  height:320px;
+   	  height:350px;
    	  overflow-y: auto; 
    }
 }
@@ -320,7 +302,6 @@ header{
 	top: 21%;
 	margin-top: 2%;
 }
-
 .mybank p {
 	color: #fff;
 	position: absolute;

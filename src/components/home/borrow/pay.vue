@@ -10,28 +10,28 @@
 		<div class="frame">
 			<div class="line">
 				<label>支付金额</label>
-				<input placeholder="1500.00" type="text" />
+				<input v-model="value" placeholder="1500.00" type="text" />
 			</div>
 			<div class="line">
 				<label id="pra">姓名</label>
-				<input type="text" />
+				<input v-model="value" type="text" />
 			</div>
 			<div class="line">
 				<label>身份证号</label>
-				<input type="text" />
+				<input v-model="value" type="text" />
 			</div>
 			<div class="line">
 				<label>银行卡号</label>
-				<input type="text" placeholder="请输入您的银行卡号" />
+				<input v-model="value" type="text" placeholder="请输入您的银行卡号" />
 			</div>
 			<div class="line">
 				<label>手机号码</label>
-				<input type="text" placeholder="请输入您绑定的手机号码" />
+				<input v-model="value" type="text" placeholder="请输入您绑定的手机号码" />
 				<input type="button" value="获取验证码" id="addSendCode" />
 			</div>
 			<div class="line">
 				<label class="code">验证码</label>
-				<input type="text" />
+				<input v-model="value" type="text" />
 			</div>
 			<div class="support_bank" id="quto">
 				<p style="color:#666;margin-top: 5%;">查看支持银行及其限额</p>
@@ -46,7 +46,7 @@
   export default{	
       data(){
           return{
-
+			  value:''
           }
       },
       methods:{

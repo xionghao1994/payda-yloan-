@@ -14,7 +14,7 @@
     },
     mounted () {
       let time = setInterval(()=>{
-        if(this.flag == true){
+        if(this.flag === true){
           clearInterval(time)
         }
         this.timeDown()
@@ -51,5 +51,7 @@
   }
 </script>
 <style scoped>
- 
+ p{
+   font-size:13px;
+ }
 </style>

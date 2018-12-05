@@ -1,13 +1,11 @@
 <template>
     <!--此处只能有一个根节点 -->
-    <div class="mui-content">
+    <div id="container">
      <header>来必借</header>
     <mt-swipe class="mt-swipe" :auto="4000">
-        <mt-swipe-item>
-        <img src="../../static/images/banner.png"/>
-        </mt-swipe-item>
-        <mt-swipe-item>
-        <img src="../../static/images/banner2.png"/>
+        <mt-swipe-item v-for="(item,index) in images" :key="index">
+         <img v-lazy.container="item.img">
+          <!-- <img :src="item.img"/>  -->
         </mt-swipe-item>
     </mt-swipe>
      <!--文字滚动 -->
@@ -26,17 +24,17 @@
 		<div class="flow">
 			<ul>
 				<li>
-					借款金额
-					<span><b class="hundred">1000</b> ¥</span>
+					{{borrowing_balance}}
+					<span><b class="hundred">{{money}}</b> ¥</span>
 				</li>
 				<li>
-				    借款期限
-				    <span><b class="seven">7</b>（天）</span>
+				    {{borrowing_data}}
+				    <span><b class="seven">{{date}}</b>（天）</span>
 			    </li>
 			</ul>
 		</div>
 		<div class="lin"></div>
-		<p>零门槛 随借还</p>
+		<p>{{astrict}}</p>
 		<div @click="next()" class="button">立即借款</div>
 	</div>  
  </div>
@@ -45,18 +43,38 @@
 // 按需引用
 import Vue from 'vue';
 import { Swipe, SwipeItem } from 'mint-ui';
-
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+
+// 懒加载
+import { Lazyload } from 'mint-ui';
+import load from '../../static/images/lazy.png'
+Vue.use(Lazyload,{
+    loading:load
+});
+
+// 打包找不到图片只能导入模块化方式在定义data数据中
+import image1 from '../../static/images/banner.png';
+import image2 from '../../static/images/banner2.png';
+
 export default{
     data(){
         return{
+            borrowing_balance:'借款金额',
+            money:'1000',
+            borrowing_data:'借款期限',
+            date:'7',
+            astrict:'零门槛，随时还',
             animate: false,
             marqueeList: [
                   '用户尾号4266刚刚卖出一部iPhone 7 Plus，获得2800元',
                   '用户尾号4266刚刚卖出一部iPhone 7 Plus，获得2800元',
                   '用户尾号9867刚刚卖出一部iPhone 7 Plus，获得2800元'          
             ],
+            images:[
+                {img:image1},
+                {img:image2}
+            ]
         }
     },
     created(){

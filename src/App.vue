@@ -6,15 +6,15 @@
 	 <nav class="mui-bar mui-bar-tab" v-if="sh">
 			<router-link to="/home" class="mui-tab-item">
 				<span class="mui-icon mui-icon-home"></span>
-				<span class="mui-tab-label">首页</span>
+				<span class="mui-tab-label">{{index}}</span>
 			</router-link>
 			<router-link to="/order" class="mui-tab-item">
 				<span class="mui-icon iconfont icon-dingdan"></span>
-				<span class="mui-tab-label">订单</span>
+				<span class="mui-tab-label">{{order}}</span>
 			</router-link>
 			<router-link to="/our" class="mui-tab-item">
 				<span class="mui-icon iconfont icon-daohanglan-05"></span>
-				<span class="mui-tab-label">我的</span>
+				<span class="mui-tab-label">{{our}}</span>
 			</router-link>
 		</nav>
 	<!-- /底部导航 -->
@@ -26,6 +26,9 @@
 export default {
  data(){
    return{
+	   index:'首页',
+		 order:'订单',
+		 our:'我的',
      isShow:false,
 		 sh:true
    }

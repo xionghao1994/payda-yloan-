@@ -8,9 +8,9 @@
         <div class="choose">
             <p class="bank">银行卡</p>
             <select id="selector">
-                <option value="">请选择银行卡</option>
-                <option>412232456512211</option>
-                <option value="newCard">更换新银行卡</option>
+                <option value="">{{bank.card}}</option>
+                <option>{{bank.number}}</option>
+                <option value="newCard">{{bank.newBank}}</option>
             </select>
         </div>
         <a href="javascript:;" id="closeBtn">取消支付</a>
@@ -24,7 +24,11 @@
   export default{
       data(){
           return{
-
+              bank:{
+                  card:'请选择银行卡',
+                  number:'412232456512211',
+                  newBank:'更换新银行卡'
+              }
           }
       },
       methods:{

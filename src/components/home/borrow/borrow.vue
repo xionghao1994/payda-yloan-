@@ -4,13 +4,9 @@
   <div style="height:1px;background-color:#F1F1F1"></div>
     <!-- 检测 -->
 	<div  class="borrowing">
-		<ul>
-			<li>您最高可借金额</li>
-			<li>¥ 4500.00</li>
-		</ul>
-		<ul>
-			<li>您可凭借信用最高获取到账金额</li>
-			<li>¥ 3600.00</li>
+		<ul v-for="(item,index) in borrow">
+			<li>{{item.name}}</li>
+			<li>{{item.money}}</li>
 		</ul>
 		<div class="anver">
 			<div class="ce"><img src="../../../static/images/anew.png" alt=""/>
@@ -21,23 +17,9 @@
 	<!-- 详情 -->
 		<div class="bor_detail">
 			<ul>
-				<li>
-					<span class="head_detail">审核</span>
-					<p class="de">24小时智能审核，最快3秒审核完毕</p>
-					<div class="zhi">
-						<img src="../../../static/images/zhi.png" alt="">
-					</div>
-				</li>
-				<li>
-					<span class="head_detail kuan">放款</span>
-					<p class="de">24小时智能放款，最快1分钟到账</p>
-					<div class="zhi">
-						<img src="../../../static/images/zhi.png" alt="">
-					</div>
-				</li>
-				<li>
-					<span class="head_detail money">提额</span>
-					<p class="de">24小时智能提额，完成借款立即提额</p>
+				<li v-for="(item,index) in arr">
+					<span class="head_detail">{{item.audit}}</span>
+					<p class="de">{{item.detail}}</p>
 					<div class="zhi">
 						<img src="../../../static/images/zhi.png" alt="">
 					</div>
@@ -46,20 +28,22 @@
 		</div>
 	<!-- 详情 over -->
     <!-- 确认删除弹出框 -->
-	<div v-show="sh" class="pubBox">
-		<div class="box">
-			<div class="text">来必借《手机回收合同》
-			</div>
-			<p class="detail">您在使用来必借产品出售手机服务前,请认真阅读并且理解《手机回收合同》当您点击同意并使用出售服务,即表示您已经理解合同,该合同将对您具有法律约束力的法律文件。</p>
-			<p class="inline">
-				<input type="checkbox" class="inp" />
-				<b class="agree"></b>
-				我已阅读并同意
-				<a href="javascript:;" class="contract">《手机回收合同》</a>
-			</p>
-			<div class="btn-waper">
-				<a href="javascript:;" @click="noAgree()" class="fl cancel">不同意</a>
-				<a href="javascript:;" @click="Agree()" class="fr sure">同意</a>
+	<div v-show="sh" class="pub_box">
+		<div class="pubBox">
+			<div class="box">
+				<div class="text">{{compact_name}}《手机回收合同》
+				</div>
+				<p class="detail">{{compact}}</p>
+				<p class="inline">
+					<input type="checkbox" class="inp" />
+					<b class="agree"></b>
+					我已阅读并同意
+					<a href="javascript:;" class="contract">《手机回收合同》</a>
+				</p>
+				<div class="btn-waper">
+					<a href="javascript:;" @click="noAgree()" class="fl cancel">不同意</a>
+					<a href="javascript:;" @click="Agree()" class="fr sure">同意</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -74,6 +58,17 @@ import { Toast } from 'mint-ui';
   export default{
       data(){
           return{
+			borrow:[
+				{name:'您最高可借金额',money:'¥ 4500.00'},
+				{name:'您可凭借信用最高获取到账金额',money:'¥ 3600.00'}
+			],
+			arr:[
+				{audit:'审核',detail:'24小时智能审核，最快3秒审核完毕'},
+				{audit:'放款',detail:'24小时智能放款，最快1分钟到账'},
+				{audit:'提额',detail:'24小时智能提额，完成借款立即提额'}
+			],
+			compact_name:'来必借',
+			compact:'您在使用来必借产品出售手机服务前,请认真阅读并且理解《手机回收合同》当您点击同意并使用出售服务,即表示您已经理解合同,该合同将对您具有法律约束力的法律文件。',
             sh:false
           }
       },
@@ -95,6 +90,15 @@ import { Toast } from 'mint-ui';
   }
 </script>
 <style scoped>
+.pub_box{
+	width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.6);
+	z-index:100;	
+}
 .pubBox{
     width:80%;
     margin:30% auto;

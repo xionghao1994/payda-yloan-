@@ -2,8 +2,8 @@
  <div class="mui-content">
    <header>帮助中心</header>
     <div class="no_bound_bank">
-		<div class="img"><img src="../../../static/images/noHlepCenter.png" alt=""></div>
-		<div class="p">暂无帮助中心消息,休息一下吧！</div>
+		<div class="img"><img :src="help.image" alt=""></div>
+		<div class="p">{{help.message}}</div>
     </div>
 	</div>	
 </template>
@@ -11,7 +11,10 @@
   export default{
       data(){
           return{
-
+			  help:{
+				  image:require('../../../static/images/noHlepCenter.png'),
+				  message:'暂无帮助中心消息,休息一下吧！'
+			  }
           }
       }
   }  

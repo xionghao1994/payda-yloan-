@@ -10,14 +10,14 @@
   	    	</div>
   	</div>
     <ul class="bg">
-     <router-link to="/ac"><li class="ac">认证中心</li></router-link>
-     <router-link to="/bank"><li class="bank">我的银行卡</li></router-link>
-     <router-link to="/back"><li class="order">意见反馈</li></router-link>
+     <router-link to="/ac"><li class="ac">{{ac}}</li></router-link>
+     <router-link to="/bank"><li class="bank">{{my_bank}}</li></router-link>
+     <router-link to="/back"><li class="order">{{feedback}}</li></router-link>
      <div style="height:7px;background-color:#F7F7F7;"></div>
-     <router-link to="/help"><li class="help">帮助中心</li></router-link>
-     <router-link to="/message"><li class="message">消息中心</li></router-link>
-     <router-link to="/call"><li class="kui">客服中心</li></router-link >
-     <router-link to="/set"><li class="set">设置</li></router-link >
+     <router-link to="/help"><li class="help">{{help}}</li></router-link>
+     <router-link to="/message"><li class="message">{{message}}</li></router-link>
+     <router-link to="/call"><li class="kui">{{worker}}</li></router-link >
+     <router-link to="/set"><li class="set">{{setting}}</li></router-link >
     </ul>
   </div>
 </template>
@@ -25,7 +25,14 @@
   export default{
     data(){
       return{
-        number:18736019320
+        number:18736019320,
+        ac:'认证中心',
+        my_bank:'我的银行卡',
+        feedback:'意见反馈',
+        help:'帮助中心',
+        message:'消息中心',
+        worker:'客服中心',
+        setting:'设置'
       }
     }
   }
