@@ -7,6 +7,7 @@ import App from './App'
 import router from './config/router'
 // 加载外部插件
 import plugins from './config/plugins'
+// 安装npm install stylus stylus-loader --save-dev
 
 // 导入配置字体图标
 import '../src/static/iconfont/iconfont.css';

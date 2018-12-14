@@ -50,8 +50,9 @@
     }
   }
 </script>
-<style scoped>
- p{
-   font-size:13px;
- }
+<style lang="stylus" scoped>
+$font-size:13px
+ p
+  font-size:$font-size
+
 </style>

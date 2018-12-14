@@ -13,3 +13,7 @@ Vue.use(Mint);
 import flexible from 'lib-flexible';
 
 Vue.use(flexible)
+
+import Navigation from 'vue-navigation'
+import router from './router' 
+Vue.use(Navigation, {router})

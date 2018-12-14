@@ -1,7 +1,9 @@
 <template>
     <!--此处只能有一个根节点 -->
     <div id="container">
-     <header>来必借</header>
+     <header>来必借
+     <span @click="login()"><img :src="image"></span>
+     </header>
     <mt-swipe class="mt-swipe" :auto="4000">
         <mt-swipe-item v-for="(item,index) in images" :key="index">
          <img v-lazy.container="item.img">
@@ -46,6 +48,7 @@ import { Swipe, SwipeItem } from 'mint-ui';
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
+
 // 懒加载
 import { Lazyload } from 'mint-ui';
 import load from '../../static/images/lazy.png'
@@ -60,6 +63,7 @@ import image2 from '../../static/images/banner2.png';
 export default{
     data(){
         return{
+            image:require('../../static/images/login.png'),
             borrowing_balance:'借款金额',
             money:'1000',
             borrowing_data:'借款期限',
@@ -104,6 +108,10 @@ export default{
      next:function(){
         //  路由跳转的方式
        this.$router.push('/borrow')
+     },
+     login:function(){
+        //  路由跳转的方式
+        this.$router.push('/login')
      }
     }
 }
@@ -123,6 +131,16 @@ header{
     line-height:40px;
     background-color:#fff;
     font-size:18px;
+}
+header span{
+    position: absolute;
+    right:10px;
+    top:5px;
+    font-size:12px;
+}
+header span img{
+    width:22px;
+    height:19px;
 }
 .banner{
     width:100%;

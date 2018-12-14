@@ -18,14 +18,18 @@
 			</router-link>
 		</nav>
 	<!-- /底部导航 -->
-  <router-view></router-view>
+	<transition :name="transitionName">
+	   <navigation>
+       <router-view class="router"></router-view>
+		 </navigation>
+	</transition>
   </div>
 </template>
-
 <script>
 export default {
  data(){
    return{
+		 transitionName: 'slide-left',
 	   index:'首页',
 		 order:'订单',
 		 our:'我的',
@@ -54,6 +58,13 @@ export default {
 //  当刷新页面的时候，因为路由地址，没有发生变化，没有执行watch,所以要在组件创建后判断是否显示后退按钮
  created(){
 	 this.judeBack(this.$route.path);
+
+	 this.$navigation.on('forward', (to, from) => {
+      this.transitionName = 'slide-left'
+    })
+    this.$navigation.on('back', (to, from) => {
+      this.transitionName = 'slide-right'
+    })
  },
 // 当路由地址变化的时候，决定后退按钮显示或者隐藏
  watch:{
@@ -65,26 +76,39 @@ export default {
 }
 </script>
 
-<style>
-*{
-	margin:0;
-	padding:0;
-}
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.mui-action-back{
-	margin-top:7px;
-	margin-left:6px;
-	position:absolute;
-}
-.mint-msgbox-message{
-  line-height:30px;
-}
-.mint-msgbox{
-	border-radius:10px;
-}
+<style lang="stylus">
+*
+ margin:0
+ padding:0
+ list-style:none
+#app
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+.mui-action-back
+	margin-top:7px
+	margin-left:6px
+	position:absolute
+	z-index:100
+.mint-msgbox-message
+  line-height:30px
+.mint-msgbox
+	border-radius:10px
 
+// 路由前进后退切换动画
+.router{
+	position: absolute;
+	width:100%;
+  transition: all 0.3s;
+}
+.slide-left-enter,
+ .slide-right-leave-to {
+	opacity: 0;
+  transform: translate(100%, 0);
+ }
+.slide-right-enter,
+  .slide-left-leave-to {
+		opacity: 0;
+  transform: translate(-100%, 0);
+	}
 </style>

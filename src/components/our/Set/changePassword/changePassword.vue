@@ -32,6 +32,7 @@
 </div>
 </template>
 <script>
+import { Toast } from 'mint-ui';
 export default{
     data(){
         return{
@@ -47,11 +48,11 @@ export default{
 		var text1 =$('#new').val();
 		var text2 =$('#loginPass').val();
 		if(this.oldPassword == '' || this.newPassword == '' || this.surePassword == ''){
-			alert('请输入密码')
+			Toast('请输入密码')
 		}else if(!pass.test(text) || !pass.test(text1) || !pass.test(text2)){
-			alert('请输入正确的密码')
+			Toast('请输入正确的密码')
 		}else if(text !==text1 || text1 !== text2){
-			alert('输入密码不一致')
+			Toast('输入密码不一致')
 			return false;
 		}
 		// $.ajax({

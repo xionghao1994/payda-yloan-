@@ -7,6 +7,8 @@ import home from '../components/home/home.vue';
 import order from '../components/order/order.vue';
 import our from '../components/our/our.vue';
 
+import login from '../components/login/login.vue';
+
 import ac from '../components/our/AC/ac.vue';
 import bank from '../components/our/Bank/bank.vue';
 import back from '../components/our/back/back.vue';
@@ -34,6 +36,7 @@ let router = new Router({
         { name: 'home', path: '/home', meta:{title:'首页'}, component: home },
         { name: 'order', path: '/order', meta:{title:'订单'}, component: order },
         { name: 'our', path: '/our', meta:{title:'个人中心'}, component: our },
+        { name: 'login',path:'/login',meta:{title:'登录'},component:login},
 
         { path: '/ac', component: ac },
         { path: '/bank', component: bank },
