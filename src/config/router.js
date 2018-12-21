@@ -2,6 +2,11 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 Vue.use(Router);
+// 路由前进后退
+Router.prototype.goBack = function () {
+    this.isBack = true
+    window.history.go(-1)
+}
 //  引用组件
 import home from '../components/home/home.vue';
 import order from '../components/order/order.vue';
@@ -56,7 +61,6 @@ let router = new Router({
         { path: '/paySuccess', component: paySuccess }
     ]
 })
-
 // 页面标题
 router.afterEach((to,from)=>{
     document.title=to.meta.title;

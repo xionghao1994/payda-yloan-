@@ -4,20 +4,10 @@
 <div style="height: 5px;background-color:#F7F7F7"></div>
     <div class="call_main">
 		<ul>
-			<li>
-				<i class="call"></i>
-				<a href="tel://0571-82878899">客服部&nbsp;&nbsp;&nbsp;0571-82878899</a>
-				<p>回收订单咨询，受理相关回收问题</p>
-			</li>
-			<li>
-				<i class="cup"></i>
-				<a href="tel://0571-82878899">质检部&nbsp;&nbsp;&nbsp;0571-82878899</a>
-				<p>受理回收快递进度查询，解答质检疑问</p>
-			</li>
-			<li>
-				<i class="us"></i>
-				<a href="tel://0571-82878899">售后部&nbsp;&nbsp;&nbsp;0571-82878899</a>
-				<p>受理相关回收订单问题</p>
+			<li v-for="item in arr">
+				<img :src="item.image">
+				<a :href="'tel:' + item.phone">{{item.name}}&nbsp;&nbsp;&nbsp;{{item.phone}}</a>
+				<p>{{item.detail}}</p>
 			</li>
 		</ul>
 	</div>
@@ -27,7 +17,24 @@
 export default{
     data(){
         return{
-
+			arr:[{
+					phone:'0571-82878899',
+					name:'客服部',
+					detail:'回收订单咨询，受理相关回收问题',
+					image:require('../../../static/images/call.png')
+				},
+				{
+					phone:'0571-82878899',
+					name:'质检部',
+					detail:'受理回收快递进度查询，解答质检疑问',
+					image:require('../../../static/images/cup.png')
+				},
+				{
+					phone:'0571-82878899',
+					name:'售后部',
+					detail:'受理相关回收订单问题',
+					image:require('../../../static/images/us.png')
+				}]
         }
     }
 }
@@ -70,26 +77,9 @@ ul {
 	margin-left: 10%;
 	font-size: 0.266667rem;
 }
- .call{
+ img{
 	width:0.626667rem;
 	height:0.56rem;
-	background:url('../../../static/images/call.png') no-repeat;
-	background-size: 0.626667rem 0.56rem;
-	display: inline-block;
-	vertical-align: middle;
-}
- .cup{
-	width:0.626667rem;
-	height:0.56rem;
-	background:url('../../../static/images/cup.png') no-repeat;
-	background-size: 0.626667rem 0.56rem;
-	display: inline-block;
-	vertical-align: middle;
-}
- .us{
-	width:0.626667rem;
-	height:0.56rem;
-	background:url('../../../static/images/us.png') no-repeat;
 	background-size: 0.626667rem 0.56rem;
 	display: inline-block;
 	vertical-align: middle;

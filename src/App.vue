@@ -20,7 +20,7 @@
 	<!-- /底部导航 -->
 	<transition :name="transitionName">
 	   <navigation>
-       <router-view class="router"></router-view>
+       <router-view :class="{'router':isActive}"></router-view>
 		 </navigation>
 	</transition>
   </div>
@@ -29,7 +29,8 @@
 export default {
  data(){
    return{
-		 transitionName: 'slide-left',
+		 isActive: false,
+		 transitionName: 'slide-right',
 	   index:'首页',
 		 order:'订单',
 		 our:'我的',
@@ -40,6 +41,7 @@ export default {
  methods:{
 	 goback(){
 		 this.$router.back();
+		 this.isActive = true;
 	 },
 	 judeBack(path){
 		 let arr =['/home','/order','/our'];
@@ -48,10 +50,13 @@ export default {
 			this.isShow = true;
 			// 1.如果不是这几个主页面隐藏
 			this.sh = false;
+			this.isActive = true;
 		 }else{
+			 	// 动态删除类样式		
 			 this.isShow = false;
 			//  2.否则显示
 			 	this.sh = true;
+				this.isActive = false;
 		 }
 	 }
  },
@@ -99,16 +104,20 @@ export default {
 .router{
 	position: absolute;
 	width:100%;
+	// 此高度很重要，防止路由切换样式抖动
+	height:100%;
   transition: all 0.3s;
 }
 .slide-left-enter,
  .slide-right-leave-to {
 	opacity: 0;
+	-webkit-transform: translate(100%, 0);
   transform: translate(100%, 0);
  }
 .slide-right-enter,
   .slide-left-leave-to {
 		opacity: 0;
-  transform: translate(-100%, 0);
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
 	}
 </style>

@@ -3,17 +3,9 @@
 <div class="mui-content">
    <header>认证中心</header>
    <ul class="AC_main">
-		<li id="ac">
-			<span><i class="list"></i>{{ac}}</span>
-			<span class="pra_ac">{{awit_ac}}<span class="mui-icon mui-icon-arrowright"></span></span>
-		</li>
-		<li>
-			<span><i class="Acc"></i>{{operator_Ac}}</span>
-			<span class="pra_ac">{{awit_ac}}<span class="mui-icon mui-icon-arrowright"></span></span>
-		</li>
-		<li id="bank">
-			<span><i class="card"></i>{{bound_bank}}</span>
-			<span class="pra_ac">{{already_bound}}<span class="mui-icon mui-icon-arrowright"></span></span>
+		<li v-for="(item,index) in arr" :key="index.item">
+			<span><img :src="item.image" :class="{'one':index==0,'two':index==1,'three':index==2}">{{item.ac}}</span>
+			<span class="pra_ac">{{item.awit_ac}}<span class="mui-icon mui-icon-arrowright"></span></span>
 		</li>
 	</ul>
 </div>
@@ -22,11 +14,11 @@
 export default{
     data(){
         return{
-           ac:'实名认证',
-           awit_ac:'待认证',
-           already_bound:'已绑定',
-           bound_bank:'绑定银行卡',
-           operator_Ac:'运营商认证'
+			arr:[
+				{ac:'实名认证',awit_ac:'待认证',image:require('../../../static/images/face.png')},
+				{ac:'绑定银行卡',awit_ac:'已绑定',image:require('../../../static/images/Acc.png')},
+				{ac:'运营商认证',awit_ac:'待认证',image:require('../../../static/images/card.png')}
+			]
         }
     }
 }
@@ -67,29 +59,26 @@ header{
 .AC_main span{
 	font-size: 0.4rem;
 }
-.AC_main .list{
+.one{
 	width:0.653333rem;
 	height:0.666667rem;
 	display: inline-block;
-	background:url('../../../static/images/face.png') no-repeat;
 	background-size:0.653333rem 0.666667rem;
 	margin-right: 5px;
 	vertical-align: middle;
 }
-.AC_main .Acc{
+.two{
 	width:0.6rem;
 	height:0.6rem;
 	display: inline-block;
-	background:url('../../../static/images/Acc.png') no-repeat;
 	background-size:0.6rem 0.6rem;
 	margin-right: 5px;
 	vertical-align: middle;
 }
-.AC_main .card{
+.three{
 	width:0.666667rem;
 	height:0.466667rem;
 	display: inline-block;
-	background:url('../../../static/images/card.png') no-repeat;
 	background-size: 0.666667rem 0.466667rem;
 	margin-right: 5px;
 	vertical-align: middle;
