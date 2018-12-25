@@ -38,7 +38,7 @@
                 type="text"
                 maxlength="6"
                 placeholder="请输入验证码" />
-				<input type="button" value="获取验证码" id="sendCode" />
+				<input type="button" @click="sendCode" v-model="codeMsg" :disabled="codeDisabled" id="sendCode" />
 			</div>
 		</form>
 		<form class="mui-input-group">
@@ -80,15 +80,21 @@ export default{
             code:'',
             auth_code:'',
             newPassword:'',
-            again_Password:''
-
+            again_Password:'',
+            codeDisabled: false,
+            // 倒计时秒数
+            countdown: 60,
+            // 按钮上的文字
+            codeMsg: '获取验证码',
+            // 定时器
+            timer: null
         }
     },
     methods:{
-        sure:function(){
+       sure:function(){
                 Toast("请输入完整信息")
                 return;
-        },
+       },
        checkPhone:function(){
            var reg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
            if(this.phone == ""){
@@ -116,6 +122,27 @@ export default{
            }else if($("#NewPass").val() !== $("#AgainPass").val() && $("#AgainPass").val() !== $("#NewPass").val()){
                Toast("两次密码不一致")
            }
+       },
+    //    发送验证码
+       sendCode(){
+        //    alert('1')
+            // 验证码60秒倒计时
+            if (!this.timer) {
+            this.timer = setInterval(() => {
+            if (this.countdown > 0 && this.countdown <= 60) {
+                this.countdown--;
+                if (this.countdown !== 0) {
+                this.codeMsg = "重新发送(" + this.countdown + ")";
+                } else {
+                clearInterval(this.timer);
+                this.codeMsg = "获取验证码";
+                this.countdown = 60;
+                this.timer = null;
+                this.codeDisabled = false;
+                }
+            }
+            }, 1000)
+            }
        }
 
     }
